@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import { Helmet } from 'react-helmet';
 
 import NavBar from './components/NavBar';
 import ProductItem from './components/ProductItem';
@@ -7,7 +8,6 @@ import { IProduct, ProBilgiler } from './models/IProduct';
 
 function Dashboard() {
 
-  const [search, setSearch] = useState('')
   const [arr, setArr] = useState<ProBilgiler[]>([])
 
   useEffect(() => {
@@ -24,11 +24,15 @@ function Dashboard() {
   
 
   return (
-    <>  <NavBar />
-        <input onChange={(evt) => setSearch( evt.target.value ) } className='form-control' placeholder='Search..'></input>
+    <>  
+        <Helmet>
+          <title>Product List</title>
+          <meta name="description" content="Product List Page" />
+        </Helmet>
+        <NavBar />
         <div className='row p-3'>
           { arr.map( ( item, index ) =>
-            <ProductItem pro={item} />
+            <ProductItem key={index} pro={item} />
           )}
         </div>
     </>

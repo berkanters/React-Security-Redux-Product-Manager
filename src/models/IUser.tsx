@@ -14,4 +14,6 @@ export interface Bilgiler {
     userSurname: string;
     userEmail:   string;
     userPhone:   string;
+    face:        string;
+    faceID:      string;
 }
